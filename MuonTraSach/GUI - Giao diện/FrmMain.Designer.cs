@@ -43,7 +43,7 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.menuContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnUser = new System.Windows.Forms.Button();
+            this.btnManage = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnBook = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -62,6 +62,8 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.headerTimer = new System.Windows.Forms.Timer(this.components);
             this.panelMain = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.btnUser = new System.Windows.Forms.Button();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -78,6 +80,7 @@
             this.guna2Panel1.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // sidebar
@@ -91,10 +94,10 @@
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.ForeColor = System.Drawing.Color.Transparent;
             this.sidebar.Location = new System.Drawing.Point(0, 0);
-            this.sidebar.MaximumSize = new System.Drawing.Size(316, 741);
+            this.sidebar.MaximumSize = new System.Drawing.Size(330, 741);
             this.sidebar.MinimumSize = new System.Drawing.Size(108, 741);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(108, 741);
+            this.sidebar.Size = new System.Drawing.Size(330, 741);
             this.sidebar.TabIndex = 0;
             // 
             // panel1
@@ -102,7 +105,7 @@
             this.panel1.Controls.Add(this.panel13);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(313, 117);
+            this.panel1.Size = new System.Drawing.Size(327, 117);
             this.panel1.TabIndex = 0;
             // 
             // panel13
@@ -234,38 +237,39 @@
             this.menuContainer.Controls.Add(this.panel8);
             this.menuContainer.Controls.Add(this.panel9);
             this.menuContainer.Controls.Add(this.panel10);
+            this.menuContainer.Controls.Add(this.panel14);
             this.menuContainer.Location = new System.Drawing.Point(3, 291);
-            this.menuContainer.MaximumSize = new System.Drawing.Size(313, 278);
-            this.menuContainer.MinimumSize = new System.Drawing.Size(313, 54);
+            this.menuContainer.MaximumSize = new System.Drawing.Size(327, 335);
+            this.menuContainer.MinimumSize = new System.Drawing.Size(327, 58);
             this.menuContainer.Name = "menuContainer";
-            this.menuContainer.Size = new System.Drawing.Size(313, 278);
+            this.menuContainer.Size = new System.Drawing.Size(327, 335);
             this.menuContainer.TabIndex = 5;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Transparent;
-            this.panel6.Controls.Add(this.btnUser);
+            this.panel6.Controls.Add(this.btnManage);
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(292, 49);
             this.panel6.TabIndex = 3;
             // 
-            // btnUser
+            // btnManage
             // 
-            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUser.Font = new System.Drawing.Font("UTM Avo", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUser.ForeColor = System.Drawing.Color.White;
-            this.btnUser.Image = global::MuonTraSach.Properties.Resources.user;
-            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.Location = new System.Drawing.Point(-13, -18);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.btnUser.Size = new System.Drawing.Size(314, 84);
-            this.btnUser.TabIndex = 2;
-            this.btnUser.Text = "            QUẢN LÝ";
-            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.UseVisualStyleBackColor = true;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            this.btnManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManage.Font = new System.Drawing.Font("UTM Avo", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManage.ForeColor = System.Drawing.Color.White;
+            this.btnManage.Image = global::MuonTraSach.Properties.Resources.user;
+            this.btnManage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManage.Location = new System.Drawing.Point(-13, -18);
+            this.btnManage.Name = "btnManage";
+            this.btnManage.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.btnManage.Size = new System.Drawing.Size(314, 84);
+            this.btnManage.TabIndex = 2;
+            this.btnManage.Text = "            QUẢN LÝ";
+            this.btnManage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManage.UseVisualStyleBackColor = true;
+            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // panel7
             // 
@@ -457,6 +461,32 @@
             this.panelMain.Size = new System.Drawing.Size(1224, 698);
             this.panelMain.TabIndex = 2;
             // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.Transparent;
+            this.panel14.Controls.Add(this.btnUser);
+            this.panel14.Location = new System.Drawing.Point(3, 278);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(304, 49);
+            this.panel14.TabIndex = 4;
+            // 
+            // btnUser
+            // 
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.Font = new System.Drawing.Font("UTM Avo", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.ForeColor = System.Drawing.Color.White;
+            this.btnUser.Image = global::MuonTraSach.Properties.Resources.user;
+            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUser.Location = new System.Drawing.Point(-10, -18);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Padding = new System.Windows.Forms.Padding(75, 0, 0, 0);
+            this.btnUser.Size = new System.Drawing.Size(355, 84);
+            this.btnUser.TabIndex = 2;
+            this.btnUser.Text = "            QUẢN LÝ NGƯỜI DÙNG";
+            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,6 +517,7 @@
             this.guna2Panel1.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -502,7 +533,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button btnUser;
+        private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btnBook;
         private System.Windows.Forms.Panel panel8;
@@ -526,6 +557,8 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblTime;
         private System.Windows.Forms.Timer headerTimer;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button btnUser;
     }
 }
 

@@ -25,7 +25,7 @@ namespace MuonTraSach
             btnDashboard.Click += BtnDashboard_Click;
 
             // management submenu buttons
-            btnUser.Click += btnUser_Click; // designer already wires this to toggle menu; keep it but ensure opening form also happens
+            btnManage.Click += btnManage_Click; // designer already wires this to toggle menu; keep it but ensure opening form also happens
             btnBook.Click += BtnBook_Click;
             btnAuthor.Click += BtnAuthor_Click;
             btnList.Click += BtnList_Click;
@@ -96,12 +96,9 @@ namespace MuonTraSach
         }
 
         // Keep toggle behavior and also open the QLUser form
-        private void btnUser_Click(object sender, EventArgs e)
+        private void btnManage_Click(object sender, EventArgs e)
         {
             menuTimer.Start();
-
-            // open user management form inside panelMain
-            OpenChildForm(new FrmQLUser());
         }
 
         private void headerTimer_Tick(object sender, EventArgs e)
@@ -169,6 +166,11 @@ namespace MuonTraSach
         private void BtnStaff_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FrmQLNhanVien());
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmQLUser());
         }
     }
 }
