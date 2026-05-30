@@ -20,11 +20,11 @@ namespace MuonTraSach
             Application.SetCompatibleTextRenderingDefault(false);
             // === TEST NHANH: Gán phiên đăng nhập giả để chạy thử form ===
             // Xóa đoạn này khi tích hợp với form đăng nhập thật
-            UserSession.MaNguoiDung = "NV001";
-            UserSession.LoaiTaiKhoan = "Nhân viên"; // Thử với "DocGia", "Admin"
+            /*UserSession.MaNguoiDung = "NV001";
+            UserSession.LoaiTaiKhoan = "NhanVien"; // Thử với "DocGia", "Admin"
             UserSession.LoaiDocGia = null;        // Đặt "SinhVien" hoặc "CBGV" nếu LoaiTaiKhoan = "DocGia"
-            // ============================================================
-            Application.Run(new FrmMuonTra());
+            // ============================================================*/
+            Application.Run(new FrmXuLyViPham());
         }
     }
 }

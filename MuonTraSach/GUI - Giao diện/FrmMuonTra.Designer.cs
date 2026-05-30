@@ -64,6 +64,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvTimkiem = new System.Windows.Forms.DataGridView();
             this.btnCapnhat = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLuu = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChitietmuon)).BeginInit();
@@ -114,7 +115,7 @@
             this.btnMuon.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(41)))), ((int)(((byte)(117)))));
             this.btnMuon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnMuon.ForeColor = System.Drawing.Color.White;
-            this.btnMuon.Location = new System.Drawing.Point(26, 758);
+            this.btnMuon.Location = new System.Drawing.Point(0, 758);
             this.btnMuon.Name = "btnMuon";
             this.btnMuon.Size = new System.Drawing.Size(104, 45);
             this.btnMuon.TabIndex = 3;
@@ -130,7 +131,7 @@
             this.btnGiahan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(41)))), ((int)(((byte)(117)))));
             this.btnGiahan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnGiahan.ForeColor = System.Drawing.Color.White;
-            this.btnGiahan.Location = new System.Drawing.Point(189, 758);
+            this.btnGiahan.Location = new System.Drawing.Point(138, 758);
             this.btnGiahan.Name = "btnGiahan";
             this.btnGiahan.Size = new System.Drawing.Size(104, 45);
             this.btnGiahan.TabIndex = 4;
@@ -146,7 +147,7 @@
             this.btnTra.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(41)))), ((int)(((byte)(117)))));
             this.btnTra.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTra.ForeColor = System.Drawing.Color.White;
-            this.btnTra.Location = new System.Drawing.Point(376, 758);
+            this.btnTra.Location = new System.Drawing.Point(292, 758);
             this.btnTra.Name = "btnTra";
             this.btnTra.Size = new System.Drawing.Size(104, 45);
             this.btnTra.TabIndex = 5;
@@ -162,7 +163,7 @@
             this.btnDuyet.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(41)))), ((int)(((byte)(117)))));
             this.btnDuyet.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDuyet.ForeColor = System.Drawing.Color.White;
-            this.btnDuyet.Location = new System.Drawing.Point(560, 758);
+            this.btnDuyet.Location = new System.Drawing.Point(457, 758);
             this.btnDuyet.Name = "btnDuyet";
             this.btnDuyet.Size = new System.Drawing.Size(104, 45);
             this.btnDuyet.TabIndex = 6;
@@ -178,7 +179,7 @@
             this.btnTuchoi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(41)))), ((int)(((byte)(117)))));
             this.btnTuchoi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTuchoi.ForeColor = System.Drawing.Color.White;
-            this.btnTuchoi.Location = new System.Drawing.Point(748, 758);
+            this.btnTuchoi.Location = new System.Drawing.Point(619, 758);
             this.btnTuchoi.Name = "btnTuchoi";
             this.btnTuchoi.Size = new System.Drawing.Size(104, 45);
             this.btnTuchoi.TabIndex = 7;
@@ -496,12 +497,28 @@
             this.btnCapnhat.Text = "Cập nhật";
             this.btnCapnhat.Click += new System.EventHandler(this.btnCapnhat_Click);
             // 
+            // btnLuu
+            // 
+            this.btnLuu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLuu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLuu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLuu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLuu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(41)))), ((int)(((byte)(117)))));
+            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnLuu.ForeColor = System.Drawing.Color.White;
+            this.btnLuu.Location = new System.Drawing.Point(764, 758);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(104, 45);
+            this.btnLuu.TabIndex = 11;
+            this.btnLuu.Text = "Lưu";
+            // 
             // FrmMuonTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1380, 858);
+            this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnCapnhat);
             this.Controls.Add(this.btnHuybo);
             this.Controls.Add(this.btnGhilai);
@@ -569,5 +586,6 @@
         private System.Windows.Forms.DataGridView dgvChitietmuon;
         private Guna.UI2.WinForms.Guna2Button btnCapnhat;
         private System.Windows.Forms.RadioButton rdoPhieuMuon;
+        private Guna.UI2.WinForms.Guna2Button btnLuu;
     }
 }

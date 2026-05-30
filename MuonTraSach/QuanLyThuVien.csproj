@@ -65,11 +65,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL-check thông tin\PhieuMuonBLL.cs" />
+    <Compile Include="BLL-check thông tin\ViPhamBLL.cs" />
     <Compile Include="DAL -SQL\DBConnection.cs" />
     <Compile Include="DAL -SQL\PhieuMuonDAL.cs" />
+    <Compile Include="DAL -SQL\ViPhamDAL.cs" />
     <Compile Include="DTO-chứa dữ liệu\PhieuMuonDTO.cs" />
     <Compile Include="DTO-chứa dữ liệu\TrangThaiPhieuMuon.cs" />
     <Compile Include="DTO-chứa dữ liệu\UserSession.cs" />
+    <Compile Include="DTO-chứa dữ liệu\ViPhamDTO.cs" />
     <Compile Include="GUI - Giao diện\FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +133,12 @@
     <Compile Include="GUI - Giao diện\FrmTimKiem.Designer.cs">
       <DependentUpon>FrmTimKiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI - Giao diện\FrmXuLyViPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI - Giao diện\FrmXuLyViPham.Designer.cs">
+      <DependentUpon>FrmXuLyViPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI - Giao diện\FrmLogin.resx">
@@ -158,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI - Giao diện\FrmTimKiem.resx">
       <DependentUpon>FrmTimKiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI - Giao diện\FrmXuLyViPham.resx">
+      <DependentUpon>FrmXuLyViPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
