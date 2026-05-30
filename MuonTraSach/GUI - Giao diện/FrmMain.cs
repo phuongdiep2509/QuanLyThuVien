@@ -160,7 +160,7 @@ namespace MuonTraSach
 
         private void BtnList_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmQLDanhMuc());
+            OpenChildForm(new FrmQLTheloai());
         }
 
         private void BtnStaff_Click(object sender, EventArgs e)
