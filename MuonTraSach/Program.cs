@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MuonTraSach.GUI___Giao_diện;
+using MuonTraSach.DTO_chứa_dữ_liệu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,13 @@ namespace MuonTraSach
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            // === TEST NHANH: Gán phiên đăng nhập giả để chạy thử form ===
+            // Xóa đoạn này khi tích hợp với form đăng nhập thật
+            UserSession.MaNguoiDung = "NV001";
+            UserSession.LoaiTaiKhoan = "Nhân viên"; // Thử với "DocGia", "Admin"
+            UserSession.LoaiDocGia = null;        // Đặt "SinhVien" hoặc "CBGV" nếu LoaiTaiKhoan = "DocGia"
+            // ============================================================
+            Application.Run(new FrmMuonTra());
         }
     }
 }

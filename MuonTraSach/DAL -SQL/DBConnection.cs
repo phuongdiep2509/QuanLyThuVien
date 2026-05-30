@@ -11,6 +11,6 @@ namespace MuonTraSach.DAL___SQL
     {
         protected SqlConnection conn =
             new SqlConnection(
-                @"Data Source = PHUONGDIEP - PC; Initial Catalog = QuanLyThuVien; Integrated Security = True; Encrypt=False");
+                @"Data Source =PC\PHAMHUE;Initial Catalog=QuanLyThuVien;Integrated Security=True;Encrypt=False");
     }
 }
