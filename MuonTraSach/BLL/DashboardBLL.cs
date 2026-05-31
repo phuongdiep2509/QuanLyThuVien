@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
-using Dashboard_Search.DAL;
-using Dashboard_Search.DTO;
+using MuonTraSach.DAL;
+using MuonTraSach.DTO;
 
-namespace Dashboard_Search.BLL
+namespace MuonTraSach.BLL
 {
     public class DashboardBLL
     {
