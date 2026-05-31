@@ -1,7 +1,7 @@
 ﻿using System.Data;
-using Dashboard_Search.DAL;
+using MuonTraSach.DAL;
 
-namespace Dashboard_Search.BLL
+namespace MuonTraSach.BLL
 {
     public class SearchBLL
     {
