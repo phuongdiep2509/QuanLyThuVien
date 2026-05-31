@@ -3,12 +3,12 @@ using System.Data;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
-using Dashboard_Search.BLL;
-using Dashboard_Search.DTO;
+using MuonTraSach.BLL;
+using MuonTraSach.DTO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace Dashboard_Search.GUI
+namespace MuonTraSach.GUI
 {
     public partial class frmDashboard : Form
     {
