@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Dashboard_Search.DAL
+namespace MuonTraSach.DAL
 {
     public class SearchDAL
     {
