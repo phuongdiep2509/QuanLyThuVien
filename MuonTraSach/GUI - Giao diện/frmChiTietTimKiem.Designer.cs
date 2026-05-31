@@ -1,4 +1,4 @@
-﻿namespace Dashboard_Search.GUI // Chú ý đổi lại namespace nếu của bạn khác nhé
+﻿namespace MuonTraSach.GUI // Chú ý đổi lại namespace nếu của bạn khác nhé
 {
     partial class frmChiTietTimKiem
     {
