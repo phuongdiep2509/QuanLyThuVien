@@ -2,9 +2,9 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Dashboard_Search.BLL;
+using MuonTraSach.BLL;
 
-namespace Dashboard_Search.GUI
+namespace MuonTraSach.GUI
 {
     public partial class frmChiTietTimKiem : Form
     {
