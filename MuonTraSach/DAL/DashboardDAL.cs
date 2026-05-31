@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using Dashboard_Search.DTO;
+using MuonTraSach.DTO;
 
-namespace Dashboard_Search.DAL
+namespace MuonTraSach.DAL
 {
     public class DashboardDAL
     {
