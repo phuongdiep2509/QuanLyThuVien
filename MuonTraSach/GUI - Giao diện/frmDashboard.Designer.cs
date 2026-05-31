@@ -1,4 +1,4 @@
-﻿namespace Dashboard_Search.GUI
+﻿namespace MuonTraSach.GUI
 {
     partial class frmDashboard
     {
