@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dashboard_Search.DTO
+namespace MuonTraSach.DTO
 {
     public class SearchResultDTO
     {
