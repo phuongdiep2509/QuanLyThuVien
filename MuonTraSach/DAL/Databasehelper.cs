@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace MuonTraSach.DAL
 {
-    public class Databasehelper
+    public class DatabaseHelper
     {
         private static readonly string connectionString =
             @"Data Source=DESKTOP-RCTQ0AM\SQLEXPRESS01;Initial Catalog=QuanLyThuVien;Integrated Security=True;Encrypt=False";

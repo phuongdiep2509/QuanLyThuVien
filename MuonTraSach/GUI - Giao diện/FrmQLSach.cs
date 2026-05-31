@@ -27,6 +27,8 @@ namespace MuonTraSach.GUI
         public FrmQLSach()
         {
             InitializeComponent();
+            txtSoLuongHienCo.KeyPress += ChiChoNhapSo_KeyPress;
+            txtSoLuongConLai.KeyPress += ChiChoNhapSo_KeyPress;
         }
 
         private void FrmQLSach_Load(object sender, EventArgs e)
@@ -46,6 +48,18 @@ namespace MuonTraSach.GUI
             cboTheLoai.DisplayMember = "TenTheLoai";
             cboTheLoai.ValueMember = "MaTheLoai";
             cboTheLoai.SelectedIndex = -1;
+
+            var dsTheLoaiLoc = theLoaiBLL.LayDangHoatDong();
+            dsTheLoaiLoc.Insert(0, new TheLoaiDTO
+            {
+                MaTheLoai = "",
+                TenTheLoai = "Tất cả"
+            });
+
+            cboLocTheLoai.DataSource = dsTheLoaiLoc;
+            cboLocTheLoai.DisplayMember = "TenTheLoai";
+            cboLocTheLoai.ValueMember = "MaTheLoai";
+            cboLocTheLoai.SelectedIndex = 0;
 
             cboTinhTrang.Items.Clear();
             cboTinhTrang.Items.Add("Bình thường");
@@ -91,8 +105,9 @@ namespace MuonTraSach.GUI
         {
             string tuKhoa = txtTimKiem.Text.Trim();
             bool? trangThai = LayTrangThaiLoc();
+            string maTheLoai = LayMaTheLoaiLoc();
 
-            totalRows = taiLieuBLL.DemSoDong(tuKhoa, trangThai);
+            totalRows = taiLieuBLL.DemSoDong(tuKhoa, trangThai, maTheLoai);
             totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
 
             if (totalPages == 0)
@@ -105,7 +120,7 @@ namespace MuonTraSach.GUI
                 currentPage = totalPages;
             }
 
-            dgvSach.DataSource = taiLieuBLL.LayDanhSach(tuKhoa, trangThai, currentPage, pageSize);
+            dgvSach.DataSource = taiLieuBLL.LayDanhSach(tuKhoa, trangThai, maTheLoai, currentPage, pageSize);
 
             lblTrang.Text = $"Trang {currentPage}/{totalPages} - Tổng {totalRows} bản ghi";
 
@@ -148,7 +163,9 @@ namespace MuonTraSach.GUI
                 dgvSach.Columns["TrangThai"].HeaderText = "Trạng thái";
 
             if (dgvSach.Columns["AnhBia"] != null)
-                dgvSach.Columns["AnhBia"].HeaderText = "Ảnh bìa";
+            {
+                dgvSach.Columns["AnhBia"].Visible = false;
+            }
 
             if (dgvSach.Columns["MaTacGia"] != null)
                 dgvSach.Columns["MaTacGia"].Visible = false;
@@ -201,6 +218,7 @@ namespace MuonTraSach.GUI
 
             picAnhBia.Image = null;
             txtMaTaiLieu.Enabled = true;
+            txtMaTaiLieu.Focus();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -407,6 +425,259 @@ namespace MuonTraSach.GUI
             {
                 picAnhBia.Image = null;
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlThongTinSach_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtAnhBia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picAnhBia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTheLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTacGia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTinhTrang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoLuongConLai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoLuongHienCo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNhaXuatBan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNamXuatBan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenTaiLieu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaTaiLieu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblThongTin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlChucNang_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlTimkiem_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cboLocTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblTrang_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TaiLieuDTO taiLieu = LayDuLieuTuForm();
+
+                string message;
+                bool result;
+
+                if (txtMaTaiLieu.Enabled == true)
+                {
+                    result = taiLieuBLL.Them(taiLieu, out message);
+                }
+                else
+                {
+                    result = taiLieuBLL.Sua(taiLieu, out message);
+                }
+
+                MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK,
+                    result ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+
+                if (result)
+                {
+                    LamMoiForm();
+                    LoadDanhSach();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lưu tài liệu:\n" + ex.Message,
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show(
+        "Bạn có chắc muốn đóng form quản lý sách không?",
+        "Xác nhận",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void btnHoatdong_Click(object sender, EventArgs e)
+        {
+            string maTaiLieu = txtMaTaiLieu.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(maTaiLieu))
+            {
+                MessageBox.Show("Vui lòng chọn tài liệu cần kích hoạt lại.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "Bạn có chắc muốn kích hoạt lại tài liệu này không?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.No)
+            {
+                return;
+            }
+
+            string message;
+            bool result = taiLieuBLL.HoatDong(maTaiLieu, out message);
+
+            MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK,
+                result ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+
+            if (result)
+            {
+                LamMoiForm();
+                LoadDanhSach();
+            }
+        }
+
+        private void bntXoa_Click(object sender, EventArgs e)
+        {
+            string maTaiLieu = txtMaTaiLieu.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(maTaiLieu))
+            {
+                MessageBox.Show("Vui lòng chọn tài liệu cần xóa.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "Bạn có chắc muốn xóa tài liệu này không?\nLưu ý: Tài liệu đã phát sinh trong phiếu mượn sẽ không thể xóa.",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.No)
+            {
+                return;
+            }
+
+            try
+            {
+                string message;
+                bool result = taiLieuBLL.Xoa(maTaiLieu, out message);
+
+                MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK,
+                    result ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+
+                if (result)
+                {
+                    LamMoiForm();
+                    LoadDanhSach();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa tài liệu:\n" + ex.Message,
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void ChiChoNhapSo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private string LayMaTheLoaiLoc()
+        {
+            if (cboLocTheLoai.SelectedValue == null)
+            {
+                return "";
+            }
+
+            return cboLocTheLoai.SelectedValue.ToString();
         }
     }
 }

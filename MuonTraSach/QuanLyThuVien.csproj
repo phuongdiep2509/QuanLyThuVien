@@ -95,7 +95,6 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=8.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.8.16.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
->>>>>>> deb0d17 (frm QLsach)
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
@@ -184,7 +183,7 @@
     <Compile Include="BLL\TacGiaBLL.cs" />
     <Compile Include="BLL\TaiLieuBLL.cs" />
     <Compile Include="BLL\TheLoaiBLL.cs" />
-    <Compile Include="DAL\Databasehelper.cs" />
+    <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="DAL\TacGiaDAL.cs" />
     <Compile Include="DAL\TaiLieuDAL.cs" />
     <Compile Include="DAL\TheLoaiDAL.cs" />
@@ -271,7 +270,6 @@
     <EmbeddedResource Include="GUI - Giao diện\FrmMuonTra.resx">
       <DependentUpon>FrmMuonTra.cs</DependentUpon>
     </EmbeddedResource>
-      <DependentUpon>FrmQLDanhMuc.cs</DependentUpon>
     <EmbeddedResource Include="GUI - Giao diện\FrmQLTheloai.resx">
       <DependentUpon>FrmQLTheloai.cs</DependentUpon>
     </EmbeddedResource>
@@ -359,10 +357,10 @@
   <ItemGroup>
     <None Include="Resources\hvnh1.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Folder Include="images\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\library.jpg" />
   </ItemGroup>

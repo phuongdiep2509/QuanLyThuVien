@@ -1,89 +1,95 @@
-﻿using MuonTraSach.DTO;
+﻿using Dapper;
+using MuonTraSach.BLL;
+using MuonTraSach.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dapper;
+using System.Windows.Forms;
 
 
 namespace MuonTraSach.DAL
 {
     internal class TaiLieuDAL
     {
-        public List<TaiLieuDTO> LayDanhSach(string tuKhoa, bool? trangThai, int page, int pageSize)
+        public List<TaiLieuDTO> LayDanhSach(string tuKhoa, bool? trangThai, string maTheLoai, int page, int pageSize)
         {
-            using (var conn = Databasehelper.GetConnection())
+            using (var conn = DatabaseHelper.GetConnection())
             {
                 int offset = (page - 1) * pageSize;
 
                 string sql = @"
-                    SELECT 
-                        tl.MaTaiLieu,
-                        tl.TenTaiLieu,
-                        tl.LoaiTaiLieu,
-                        tl.MaTacGia,
-                        tg.TenTacGia,
-                        tl.MaTheLoai,
-                        th.TenTheLoai,
-                        tl.NamXuatBan,
-                        tl.NhaXuatBan,
-                        tl.SoLuongHienCo,
-                        tl.SoLuongConLai,
-                        tl.TinhTrang,
-                        tl.TrangThai,
-                        tl.AnhBia
-                    FROM tblTaiLieu tl
-                    LEFT JOIN tblTacGia tg ON tl.MaTacGia = tg.MaTacGia
-                    LEFT JOIN tblTheLoai th ON tl.MaTheLoai = th.MaTheLoai
-                    WHERE 
-                        (@TuKhoa IS NULL OR @TuKhoa = '' 
-                         OR tl.MaTaiLieu LIKE '%' + @TuKhoa + '%'
-                         OR tl.TenTaiLieu LIKE '%' + @TuKhoa + '%'
-                         OR tg.TenTacGia LIKE '%' + @TuKhoa + '%'
-                         OR th.TenTheLoai LIKE '%' + @TuKhoa + '%')
-                        AND (@TrangThai IS NULL OR tl.TrangThai = @TrangThai)
-                    ORDER BY tl.MaTaiLieu
-                    OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
+            SELECT 
+                tl.MaTaiLieu,
+                tl.TenTaiLieu,
+                tl.LoaiTaiLieu,
+                tl.MaTacGia,
+                tg.TenTacGia,
+                tl.MaTheLoai,
+                th.TenTheLoai,
+                tl.NamXuatBan,
+                tl.NhaXuatBan,
+                tl.SoLuongHienCo,
+                tl.SoLuongConLai,
+                tl.TinhTrang,
+                tl.TrangThai,
+                tl.AnhBia
+            FROM tblTaiLieu tl
+            LEFT JOIN tblTacGia tg ON tl.MaTacGia = tg.MaTacGia
+            LEFT JOIN tblTheLoai th ON tl.MaTheLoai = th.MaTheLoai
+            WHERE 
+                (@TuKhoa IS NULL OR @TuKhoa = '' 
+                 OR tl.MaTaiLieu LIKE '%' + @TuKhoa + '%'
+                 OR tl.TenTaiLieu LIKE '%' + @TuKhoa + '%'
+                 OR tg.TenTacGia LIKE '%' + @TuKhoa + '%'
+                 OR th.TenTheLoai LIKE '%' + @TuKhoa + '%')
+                AND (@TrangThai IS NULL OR tl.TrangThai = @TrangThai)
+                AND (@MaTheLoai IS NULL OR @MaTheLoai = '' OR tl.MaTheLoai = @MaTheLoai)
+            ORDER BY tl.MaTaiLieu
+            OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
 
                 return conn.Query<TaiLieuDTO>(sql, new
                 {
                     TuKhoa = tuKhoa,
                     TrangThai = trangThai,
+                    MaTheLoai = maTheLoai,
                     Offset = offset,
                     PageSize = pageSize
                 }).ToList();
             }
         }
 
-        public int DemSoDong(string tuKhoa, bool? trangThai)
+        public int DemSoDong(string tuKhoa, bool? trangThai, string maTheLoai)
         {
-            using (var conn = Databasehelper.GetConnection())
+            using (var conn = DatabaseHelper.GetConnection())
             {
                 string sql = @"
-                    SELECT COUNT(*)
-                    FROM tblTaiLieu tl
-                    LEFT JOIN tblTacGia tg ON tl.MaTacGia = tg.MaTacGia
-                    LEFT JOIN tblTheLoai th ON tl.MaTheLoai = th.MaTheLoai
-                    WHERE 
-                        (@TuKhoa IS NULL OR @TuKhoa = '' 
-                         OR tl.MaTaiLieu LIKE '%' + @TuKhoa + '%'
-                         OR tl.TenTaiLieu LIKE '%' + @TuKhoa + '%'
-                         OR tg.TenTacGia LIKE '%' + @TuKhoa + '%'
-                         OR th.TenTheLoai LIKE '%' + @TuKhoa + '%')
-                        AND (@TrangThai IS NULL OR tl.TrangThai = @TrangThai)";
+            SELECT COUNT(*)
+            FROM tblTaiLieu tl
+            LEFT JOIN tblTacGia tg ON tl.MaTacGia = tg.MaTacGia
+            LEFT JOIN tblTheLoai th ON tl.MaTheLoai = th.MaTheLoai
+            WHERE 
+                (@TuKhoa IS NULL OR @TuKhoa = '' 
+                 OR tl.MaTaiLieu LIKE '%' + @TuKhoa + '%'
+                 OR tl.TenTaiLieu LIKE '%' + @TuKhoa + '%'
+                 OR tg.TenTacGia LIKE '%' + @TuKhoa + '%'
+                 OR th.TenTheLoai LIKE '%' + @TuKhoa + '%')
+                AND (@TrangThai IS NULL OR tl.TrangThai = @TrangThai)
+                AND (@MaTheLoai IS NULL OR @MaTheLoai = '' OR tl.MaTheLoai = @MaTheLoai)";
 
                 return conn.ExecuteScalar<int>(sql, new
                 {
                     TuKhoa = tuKhoa,
-                    TrangThai = trangThai
+                    TrangThai = trangThai,
+                    MaTheLoai = maTheLoai
                 });
             }
         }
 
         public bool Them(TaiLieuDTO taiLieu)
         {
-            using (var conn = Databasehelper.GetConnection())
+            using (var conn = DatabaseHelper.GetConnection())
             {
                 string sql = @"
                     INSERT INTO tblTaiLieu
@@ -124,7 +130,7 @@ namespace MuonTraSach.DAL
 
         public bool Sua(TaiLieuDTO taiLieu)
         {
-            using (var conn = Databasehelper.GetConnection())
+            using (var conn = DatabaseHelper.GetConnection())
             {
                 string sql = @"
                     UPDATE tblTaiLieu
@@ -149,7 +155,7 @@ namespace MuonTraSach.DAL
 
         public bool NgungHoatDong(string maTaiLieu)
         {
-            using (var conn = Databasehelper.GetConnection())
+            using (var conn = DatabaseHelper.GetConnection())
             {
                 string sql = @"
                     UPDATE tblTaiLieu
@@ -163,7 +169,7 @@ namespace MuonTraSach.DAL
 
         public bool KiemTraMaTonTai(string maTaiLieu)
         {
-            using (var conn = Databasehelper.GetConnection())
+            using (var conn = DatabaseHelper.GetConnection())
             {
                 string sql = @"
                     SELECT COUNT(*)
@@ -172,6 +178,45 @@ namespace MuonTraSach.DAL
 
                 int count = conn.ExecuteScalar<int>(sql, new { MaTaiLieu = maTaiLieu });
                 return count > 0;
+            }
+        }
+        public bool HoatDong(string maTaiLieu)
+        {
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                string sql = @"
+            UPDATE tblTaiLieu
+            SET TrangThai = 1
+            WHERE MaTaiLieu = @MaTaiLieu";
+
+                int result = conn.Execute(sql, new { MaTaiLieu = maTaiLieu });
+                return result > 0;
+            }
+        }
+        public bool KiemTraTaiLieuDangDuocMuon(string maTaiLieu)
+        {
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                string sql = @"
+            SELECT COUNT(*)
+            FROM tblChiTietPhieuMuon
+            WHERE MaTaiLieu = @MaTaiLieu";
+
+                int count = conn.ExecuteScalar<int>(sql, new { MaTaiLieu = maTaiLieu });
+                return count > 0;
+            }
+        }
+
+        public bool Xoa(string maTaiLieu)
+        {
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                string sql = @"
+            DELETE FROM tblTaiLieu
+            WHERE MaTaiLieu = @MaTaiLieu";
+
+                int result = conn.Execute(sql, new { MaTaiLieu = maTaiLieu });
+                return result > 0;
             }
         }
     }

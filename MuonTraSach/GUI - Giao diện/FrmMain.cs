@@ -172,5 +172,15 @@ namespace MuonTraSach
         {
             OpenChildForm(new FrmQLUser());
         }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void sidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace MuonTraSach.BLL
     {
         private readonly TaiLieuDAL taiLieuDAL = new TaiLieuDAL();
 
-        public List<TaiLieuDTO> LayDanhSach(string tuKhoa, bool? trangThai, int page, int pageSize)
+        public List<TaiLieuDTO> LayDanhSach(string tuKhoa, bool? trangThai, string maTheLoai, int page, int pageSize)
         {
             if (page < 1)
             {
@@ -20,12 +20,12 @@ namespace MuonTraSach.BLL
                 pageSize = 10;
             }
 
-            return taiLieuDAL.LayDanhSach(tuKhoa, trangThai, page, pageSize);
+            return taiLieuDAL.LayDanhSach(tuKhoa, trangThai, maTheLoai, page, pageSize);
         }
 
-        public int DemSoDong(string tuKhoa, bool? trangThai)
+        public int DemSoDong(string tuKhoa, bool? trangThai, string maTheLoai)
         {
-            return taiLieuDAL.DemSoDong(tuKhoa, trangThai);
+            return taiLieuDAL.DemSoDong(tuKhoa, trangThai, maTheLoai);
         }
 
         public bool Them(TaiLieuDTO taiLieu, out string message)
@@ -193,6 +193,54 @@ namespace MuonTraSach.BLL
             }
 
             message = "Ngừng hoạt động tài liệu thất bại.";
+            return false;
+        }
+        public bool HoatDong(string maTaiLieu, out string message)
+        {
+            message = "";
+
+            if (string.IsNullOrWhiteSpace(maTaiLieu))
+            {
+                message = "Vui lòng chọn tài liệu cần kích hoạt lại.";
+                return false;
+            }
+
+            bool result = taiLieuDAL.HoatDong(maTaiLieu);
+
+            if (result)
+            {
+                message = "Kích hoạt lại tài liệu thành công.";
+                return true;
+            }
+
+            message = "Kích hoạt lại tài liệu thất bại.";
+            return false;
+        }
+        public bool Xoa(string maTaiLieu, out string message)
+        {
+            message = "";
+
+            if (string.IsNullOrWhiteSpace(maTaiLieu))
+            {
+                message = "Vui lòng chọn tài liệu cần xóa.";
+                return false;
+            }
+
+            if (taiLieuDAL.KiemTraTaiLieuDangDuocMuon(maTaiLieu))
+            {
+                message = "Không thể xóa tài liệu này vì đã phát sinh trong phiếu mượn. Vui lòng dùng chức năng Ngừng hoạt động.";
+                return false;
+            }
+
+            bool result = taiLieuDAL.Xoa(maTaiLieu);
+
+            if (result)
+            {
+                message = "Xóa tài liệu thành công.";
+                return true;
+            }
+
+            message = "Xóa tài liệu thất bại.";
             return false;
         }
     }

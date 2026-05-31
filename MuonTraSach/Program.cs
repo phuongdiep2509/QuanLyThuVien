@@ -1,5 +1,7 @@
 ﻿using MuonTraSach.GUI___Giao_diện;
 using MuonTraSach.DTO_chứa_dữ_liệu;
+using MuonTraSach.DTO;
+using MuonTraSach.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,7 @@ namespace MuonTraSach
             UserSession.LoaiTaiKhoan = "NhanVien"; // Thử với "DocGia", "Admin"
             UserSession.LoaiDocGia = null;        // Đặt "SinhVien" hoặc "CBGV" nếu LoaiTaiKhoan = "DocGia"
             // ============================================================*/
-            Application.Run(new FrmXuLyViPham());
+            Application.Run(new FrmQLTacGia());
         }
     }
 }
