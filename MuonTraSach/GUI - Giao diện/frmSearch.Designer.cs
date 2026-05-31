@@ -1,4 +1,4 @@
-﻿namespace Dashboard_Search.GUI // Đổi lại đúng tên namespace của bạn nếu cần
+﻿namespace MuonTraSachh.GUI // Đổi lại đúng tên namespace của bạn nếu cần
 {
     partial class frmSearch
     {
